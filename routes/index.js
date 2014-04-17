@@ -14,7 +14,13 @@ router.get('/send', function(req, res) {
   var entered_emoji = req.query.entered_emoji;
   back.get_info(entered_emoji, function(data) {
     console.log("routes data", data);
-    res.json(data);
+    
+    res.redirect('http://google.com');
+    console.log("gets here");
+    if (data == "sorry!"){
+    	"got bad data!";
+    }
+
   });
 });
 

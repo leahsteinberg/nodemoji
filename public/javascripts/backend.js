@@ -1,3 +1,6 @@
+//var sampletext = require('./sampletext.js');
+
+
 var emojidict = require('./emojidictfile.js');
 var acctKey = "Swr9A1kb4Rua9Z5FFfw1qvK3dogaGPvkUtR1ceKv3kU";
 var auth    = new Buffer([ acctKey, acctKey ].join(':')).toString('base64');
@@ -47,10 +50,9 @@ function parse_input(emoji_string){
 
 
 function get_info(emoji, cbf){
+	var resultstext;
 		var word_array = parse_input(emoji);
-		if(word_array.length>0){}
 		console.log("WORD ARRAY IS ***, ", word_array);
-
 var rootUri = 'https://api.datamarket.azure.com/Bing/Search';
 var service_op = "Web";
 
@@ -60,58 +62,33 @@ for(var i = 0; i<word_array.length; i++){
 	querystring= querystring.concat("'");
 }
 console.log("querystring is: ", querystring);
-request.get({
-	url: rootUri + '/' + service_op,
-	qs:{
-		$format : 'json',
-		Query: querystring,
-	}
+// request.get({
+// 	url: rootUri + '/' + service_op,
+// 	qs:{
+// 		$format : 'json',
+// 		Query: querystring,
+// 	}
 
-}, function(err, response, body){
-console.log(response.statusCode);
-var results = JSON.parse(response.body);
-var resultstext = results.d.results;
-console.log(resultstext[0]);
-for(var j = 0; j<resultstext.length; j++){
-console.log(resultstext[j]["Url"]);
+// }, function(err, response, body){
+// console.log(response.statusCode);
+// 	if(response.statusCode == 200){
 
-}
-}// there's stuff in word array
-else{
-// handle there not being enough stuff in word array
-}
-});
-
-
-		// var AccountKey = "Swr9A1kb4Rua9Z5FFfw1qvK3dogaGPvkUtR1ceKv3kU";
-		// bingurl = "https://user:";
-		// bingurl = bingurl.concat(AccountKey);
-		// bingurl= bingurl.concat("@api.datamarket.azure.com/Bing/SearchWeb/Web?Query=%27");
-		// for(var i = 0; i<word_array.length-1; i++){
-		// 	bingurl = bingurl.concat(word_array[i]);
-		// 	bingurl=bingurl.concat("%20");
-		// }
-		// 	bingurl = bingurl.concat(word_array[i]);
-		// bingurl=bingurl.concat("%27en-US%27&$top=50&$format=JSON");
-
-		// console.log("*** BING URL IS:  ", bingurl);
-
-		// //Query=%27leo%20fender%27&Market=%27en-US%27&$top=50&$format=JSON">
-
-		// request.get(bingurl, function(error, response, html){
-		// 	console.log("status code", response.statusCode);
-		// 	 // callback();
-		//});
+// 		var results = JSON.parse(response.body);
+// 		var resultstext = results.d.results;
+// 		if(resultstext.length>0){
+// 			for(var j = 0; j<resultstext.length; j++){
 		
+// 	}
+// 	}// there's stuff in word array
+	
+// 	}
+	
 
-	/// need to separate emojis and words in a single array, determine if they are emoji's/words
-	//console.log(emojidict.emojidict);
-	//var word = emojidict.emojidict[emoji];
-	//console.log("in get info, word is, ", word);
+// cbf(resultstext[0]["Url"]);
+// });// end request
+cbf('http://www.hospitallink.com/');
 
 
-
-cbf("yay!");
 };
 
 
