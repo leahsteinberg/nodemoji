@@ -831,4 +831,5 @@ emojidict ={
    "🌲": "evergreen tree",
    "👭": "woman and woman holding hands",
    "👬": "man and man holding hands"
-}
+};
+module.exports.emojidict = emojidict;

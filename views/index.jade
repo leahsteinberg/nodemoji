@@ -1,11 +1,12 @@
 html.
   <head>
   <script src="./javascripts/emojiarrayfile.js" charset="utf-8"></script>
-    hi there
+      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
   </head>
   <body>
-  <header id = "myheader">
-  what is up
+  <header id ="theheaderid">
+  Hit space bar for a random emoji.
+  
    <form action="/send" method="get" id="searchform">
       <label> </label><input type="text" id="search1"<br>
       <input class="submit" type="submit" value="Search">
@@ -14,15 +15,55 @@ html.
    
     <script>
 
-    console.log(emoji_array);
-    document.addEventListener("click", function(event){
+    var thing = function(){var number = Math.floor(Math.random()*600);
+    var str = "";
+    for(var i = 0; i<10; i++){
+     var number = Math.floor(Math.random()*600);
+    str = str.concat(emojiarray[number]);
+ 
+    }
+    console.log(str);
+
+    var mytext=document.createTextNode(str);
+    var theheader = document.getElementById("theheaderid");
+    console.log(theheader);
+    theheader.appendChild(mytext)
+    };
+ 
+
+    document.addEventListener("keydown", function(event){
+    console.log("kc ", event.keyCode);
+    if(event.keyCode === 32){
     var number = Math.floor(Math.random()*600);
-    var str = emoji_array[number];
+    var str = emojiarray[number];
     var theform = document.getElementById("searchform");
     theform.search1.value += str;
-
-
+    }
     });
+
+
+        $(document).ready(function(e) { 
+        console.log("doing some jquery!");
+
+
+          $(".submit").click(function(e) {
+          console.log("jquery thinks they have pressed submit!");
+
+            e.preventDefault();
+            var formData = {
+              'entered_emoji': document.getElementById("search1").value
+            };
+            $.ajax({
+              type: "GET",
+              data: formData,
+              url: '/send',
+              dataType: 'json'
+            }).done(function(data) {
+              console.log("data in jade", data);
+            });
+            
+          });
+          });
   
     </script>
    
