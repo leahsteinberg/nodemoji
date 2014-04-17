@@ -1,0 +1,29 @@
+html.
+  <head>
+  <script src="./javascripts/emojiarrayfile.js" charset="utf-8"></script>
+    hi there
+  </head>
+  <body>
+  <header id = "myheader">
+  what is up
+   <form action="/send" method="get" id="searchform">
+      <label> </label><input type="text" id="search1"<br>
+      <input class="submit" type="submit" value="Search">
+      </form>  
+  </header>
+   
+    <script>
+
+    console.log(emoji_array);
+    document.addEventListener("click", function(event){
+    var number = Math.floor(Math.random()*600);
+    var str = emoji_array[number];
+    var theform = document.getElementById("searchform");
+    theform.search1.value += str;
+
+
+    });
+  
+    </script>
+   
+  </body>
