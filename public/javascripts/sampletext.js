@@ -397,7 +397,7 @@ hospitaltext = [ { __metadata:
     Title: 'Welcome to Memorial Hospital!',
     Description: 'An acute-care facility that incorporates state-of-the-art procedures and equipment to care for patients.',
     DisplayUrl: 'www.memorialhospital.org',
-    Url: 'http://www.memorialhospital.org/' } ]
+    Url: 'http://www.memorialhospital.org/' } ,
 { __metadata:
    { uri: 'https://api.datamarket.azure.com/Data.ashx/Bing/Search/Web?Query=\'hospital\'&$skip=0&$top=1',
      type: 'WebResult' },

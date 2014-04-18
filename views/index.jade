@@ -1,49 +1,63 @@
 html.
   <head>
   <script src="./javascripts/emojiarrayfile.js" charset="utf-8"></script>
-      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <link href="./static/bootstrap/css/bootstrap.css" rel="stylesheet" >
-    <link href="./static/Flat-UI-master/css/flat-ui.css" rel="stylesheet">
+      <script src="./javascripts/d3.js" charset="utf-8"></script>
+
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <link href="static/bootstrap/css/bootstrap.css" rel="stylesheet" >
+    <link href="static/Flat-UI-master/css/flat-ui.css" rel="stylesheet">
 
   </head>
-  <body>
+  <body id = "thebodyid">
   <header id ="theheaderid">
-  Hit space bar for a random emoji.
+  Hit the space bar for a random emoji.
   
    <form action="/send" method="get" id="searchform">
       <label> </label><input type="text" id="search1"<br>
       <input class="submit" type="submit" value="Search">
       </form>  
   </header>
+        <div id = "resultsdiv"> </div>
+
    
     <script>
-
-    var thing = function(){var number = Math.floor(Math.random()*600);
-    var str = "";
-    for(var i = 0; i<10; i++){
-     var number = Math.floor(Math.random()*600);
-    str = str.concat(emojiarray[number]);
- 
-    }
-    console.log(str);
-
-    var mytext=document.createTextNode(str);
-    var theheader = document.getElementById("theheaderid");
-    console.log(theheader);
-    theheader.appendChild(mytext)
-    };
  
 
     document.addEventListener("keydown", function(event){
-    console.log("kc ", event.keyCode);
-    if(event.keyCode === 32){
-    var number = Math.floor(Math.random()*600);
-    var str = emojiarray[number];
-    var theform = document.getElementById("searchform");
-    theform.search1.value += str;
-    }
+
+        console.log("kc ", event.keyCode);
+        if(event.keyCode === 32){
+            var number = Math.floor(Math.random()*600);
+            var str = emojiarray[number];
+            var theform = document.getElementById("searchform");
+            theform.search1.value += str;
+        }
     });
 
+
+
+    var showResults = function(data){
+      $.each(data, function(index, value){ 
+       var string = '<div class = "datapiece"> <h6 class="datatitle"> ';
+      string = string.concat(value["Title"]);
+      string = string.concat('</h6> <small class = "datadescription">');
+      string = string.concat(value["Description"]);
+      string = string.concat('</small>  <a class = "dataurl" href = ');
+      string = string.concat(value["Url"]);
+      string = string.concat('>');
+      string = string.concat(value["DisplayUrl"]);
+      string = string.concat('</a> </div>');
+      console.log(string);
+
+          $( "#resultsdiv" ).append(string);
+      });
+
+      };
+
+     
+
+  
+    
 
         $(document).ready(function(e) { 
         console.log("doing some jquery!");
@@ -62,7 +76,8 @@ html.
               url: '/send',
               dataType: 'json'
             }).done(function(data) {
-              console.log("data in jade", data);
+              console.log("PRESENT DATA HERE!", data[0]);
+                showResults(data);
             });
             
           });

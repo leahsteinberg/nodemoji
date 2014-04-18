@@ -1,4 +1,4 @@
-//var sampletext = require('./sampletext.js');
+var sampletext = require('./sampletext.js');
 
 
 var emojidict = require('./emojidictfile.js');
@@ -51,17 +51,17 @@ function parse_input(emoji_string){
 
 function get_info(emoji, cbf){
 	var resultstext;
-		var word_array = parse_input(emoji);
-		console.log("WORD ARRAY IS ***, ", word_array);
-var rootUri = 'https://api.datamarket.azure.com/Bing/Search';
-var service_op = "Web";
+	var word_array = parse_input(emoji);
+	console.log("WORD ARRAY IS ***, ", word_array);
+	var rootUri = 'https://api.datamarket.azure.com/Bing/Search';
+	var service_op = "Web";
 
-var querystring = "'";
-for(var i = 0; i<word_array.length; i++){
-	querystring= querystring.concat(word_array[i]);
-	querystring= querystring.concat("'");
-}
-console.log("querystring is: ", querystring);
+	var querystring = "'";
+	for(var i = 0; i<word_array.length; i++){
+		querystring= querystring.concat(word_array[i]);
+		querystring= querystring.concat("'");
+	}
+	//console.log("querystring is: ", querystring);
 // request.get({
 // 	url: rootUri + '/' + service_op,
 // 	qs:{
@@ -86,7 +86,9 @@ console.log("querystring is: ", querystring);
 
 // cbf(resultstext[0]["Url"]);
 // });// end request
-cbf('http://www.hospitallink.com/');
+hospitaltext = hospitaltext.slice(0,10);
+
+cbf(hospitaltext);
 
 
 };
