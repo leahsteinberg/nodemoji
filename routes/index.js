@@ -6,7 +6,7 @@ var home = require(__dirname, 'views/index');
 /* GET home page. */
 router.get('/', function(req, res) {
 	console.log("home page!");
-  res.render('index', { title: 'Express' });
+  res.render('index', { title: 'Emoji Search' });
 });
 
 router.get('/send', function(req, res) {

@@ -1,5 +1,7 @@
 var sampletext = require('./sampletext.js');
+var async = require('async');
 
+var debug = false;
 
 var emojidict = require('./emojidictfile.js');
 var acctKey = "Swr9A1kb4Rua9Z5FFfw1qvK3dogaGPvkUtR1ceKv3kU";
@@ -13,6 +15,8 @@ var request = require('request').defaults({
 
 
 function parse_input(emoji_string){	
+	
+
 	var emoji_array = [];
 	for (var i = 0; i<emoji_string.length; i+=2){
 		emoji_array.push(emoji_string.slice(i,i+2));
@@ -61,34 +65,42 @@ function get_info(emoji, cbf){
 		querystring= querystring.concat(word_array[i]);
 		querystring= querystring.concat("'");
 	}
-	//console.log("querystring is: ", querystring);
-// request.get({
-// 	url: rootUri + '/' + service_op,
-// 	qs:{
-// 		$format : 'json',
-// 		Query: querystring,
-// 	}
+	console.log("querystring is: ", querystring);
+	if(debug === false){
+request.get({
+	url: rootUri + '/' + service_op,
+	qs:{
+		$format : 'json',
+		Query: querystring,
+	}
 
-// }, function(err, response, body){
-// console.log(response.statusCode);
-// 	if(response.statusCode == 200){
+}, function(err, response, body){
+console.log(response.statusCode);
+	if(response.statusCode == 200){
 
-// 		var results = JSON.parse(response.body);
-// 		var resultstext = results.d.results;
-// 		if(resultstext.length>0){
-// 			for(var j = 0; j<resultstext.length; j++){
+		var results = JSON.parse(response.body);
+		console.log(results);
+		var resultstext = results.d.results;
+		console.log(resultstext);
+		if(resultstext.length>0){
+			for(var j = 0; j<resultstext.length; j++){
 		
-// 	}
-// 	}// there's stuff in word array
+	}
+	}// there's stuff in word array
 	
-// 	}
-	
+	}
+	cbf(resultstext.slice(0,10));
 
-// cbf(resultstext[0]["Url"]);
-// });// end request
+
+ });// end request
+}
+else{
 hospitaltext = hospitaltext.slice(0,10);
 
 cbf(hospitaltext);
+
+}
+
 
 
 };
