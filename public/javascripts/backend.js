@@ -1,7 +1,11 @@
 var sampletext = require('./sampletext.js');
 var async = require('async');
+var natural = require('natural'), wordnet = new natural.WordNet('');
+console.log(wordnet);
 
-var debug = false;
+
+
+var debug = true;
 
 var emojidict = require('./emojidictfile.js');
 var acctKey = "Swr9A1kb4Rua9Z5FFfw1qvK3dogaGPvkUtR1ceKv3kU";
@@ -40,6 +44,38 @@ function parse_input(emoji_string){
 			}
 		}// end for loop
 	}
+	
+
+	var word_dict = {};
+	for (var i = 0; i< word_array.length; i++){
+		wordnet.lookup(word_array[i], function(results){
+			//console.log('******');
+			//			console.log(results);
+
+			//console.log('*******');
+
+			wordnet.getSynonyms(results[0], function(results){
+				results.forEach(function(result){
+
+				console.log('~~~~~~~~~~~~~~~~~~~~');
+				//console.log(result);
+				//console.log(result.synsetOffset);
+				//console.log(result.pos);
+				console.log('&&&&');
+				console.log(result.lemma);
+				//console.log(result.pos);
+				console.log('$$$$$$');
+				console.log(result.gloss);
+			});
+
+
+			});
+
+			});
+
+		}
+
+	
 	//var word_string = '';
 	//for(var i = 0; i< word_array.length; i++){
 	//	word_string = word_string.concat(word_array[i]);
@@ -61,11 +97,13 @@ function get_info(emoji, cbf){
 	var service_op = "Web";
 
 	var querystring = "'";
+	/// if word array is long, stick some ORs in there.
 	for(var i = 0; i<word_array.length; i++){
 		querystring= querystring.concat(word_array[i]);
 		querystring= querystring.concat("'");
 	}
-	console.log("querystring is: ", querystring);
+	//querystring = querystring.concat("AND'NOT'emoji'");
+	//console.log("querystring is: ", querystring);
 	if(debug === false){
 request.get({
 	url: rootUri + '/' + service_op,
@@ -93,6 +131,16 @@ console.log(response.statusCode);
 
 
  });// end request
+
+
+
+
+
+
+
+
+
+
 }
 else{
 hospitaltext = hospitaltext.slice(0,10);

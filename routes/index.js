@@ -13,7 +13,7 @@ router.get('/send', function(req, res) {
 	console.log("send! in index router!");
   var entered_emoji = req.query.entered_emoji;
   back.get_info(entered_emoji, function(data) {
-    console.log("routes data", data[0]);
+    //console.log("routes data", data[0]);
 
     res.json(data);
     //console.log("gets here");

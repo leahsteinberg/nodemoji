@@ -16,6 +16,7 @@ html.
       <label> </label><input type="text" id="search1"<br>
       <input class="submit" type="submit" value="Search">
       </form>  
+      <button id ="emojibutton">Add Random Emoji!</button>
   </header>
         <div id = "resultsdiv"> </div>
 
@@ -23,16 +24,14 @@ html.
     <script>
  
 
-    document.addEventListener("keydown", function(event){
-
-        console.log("kc ", event.keyCode);
-        if(event.keyCode === 32){
-            var number = Math.floor(Math.random()*600);
+      $("#emojibutton").click(function(){
+       var number = Math.floor(Math.random()*600);
             var str = emojiarray[number];
             var theform = document.getElementById("searchform");
             theform.search1.value += str;
-        }
-    });
+
+      });
+ 
 
 
 

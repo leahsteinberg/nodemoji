@@ -1,0 +1,67 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/Cellar/node/0.10.26/bin/node',
+1 verbose cli   '/usr/local/bin/npm',
+1 verbose cli   'install',
+1 verbose cli   'node-walk',
+1 verbose cli   '-g' ]
+2 info using npm@1.4.3
+3 info using node@v0.10.26
+4 verbose cache add [ 'node-walk', null ]
+5 verbose cache add name=undefined spec="node-walk" args=["node-walk",null]
+6 verbose parsed url { protocol: null,
+6 verbose parsed url   slashes: null,
+6 verbose parsed url   auth: null,
+6 verbose parsed url   host: null,
+6 verbose parsed url   port: null,
+6 verbose parsed url   hostname: null,
+6 verbose parsed url   hash: null,
+6 verbose parsed url   search: null,
+6 verbose parsed url   query: null,
+6 verbose parsed url   pathname: 'node-walk',
+6 verbose parsed url   path: 'node-walk',
+6 verbose parsed url   href: 'node-walk' }
+7 silly lockFile 2a5e945d-node-walk node-walk
+8 verbose lock node-walk /Users/LeahSteinberg/.npm/2a5e945d-node-walk.lock
+9 silly lockFile 2a5e945d-node-walk node-walk
+10 silly lockFile 2a5e945d-node-walk node-walk
+11 verbose addNamed [ 'node-walk', '' ]
+12 verbose addNamed [ null, '*' ]
+13 silly lockFile b30af978-node-walk node-walk@
+14 verbose lock node-walk@ /Users/LeahSteinberg/.npm/b30af978-node-walk.lock
+15 silly addNameRange { name: 'node-walk', range: '*', hasData: false }
+16 verbose url raw node-walk
+17 verbose url resolving [ 'https://registry.npmjs.org/', './node-walk' ]
+18 verbose url resolved https://registry.npmjs.org/node-walk
+19 info trying registry request attempt 1 at 17:49:22
+20 http GET https://registry.npmjs.org/node-walk
+21 http 404 https://registry.npmjs.org/node-walk
+22 silly registry.get cb [ 404,
+22 silly registry.get   { date: 'Mon, 21 Apr 2014 21:49:23 GMT',
+22 silly registry.get     server: 'CouchDB/1.5.0 (Erlang OTP/R14B04)',
+22 silly registry.get     'content-type': 'application/json',
+22 silly registry.get     via: '1.1 varnish',
+22 silly registry.get     'cache-control': 'max-age=0',
+22 silly registry.get     'content-length': '52',
+22 silly registry.get     'accept-ranges': 'bytes',
+22 silly registry.get     'x-served-by': 'cache-v41-ASH, cache-jfk1030-JFK',
+22 silly registry.get     'x-cache': 'MISS, MISS',
+22 silly registry.get     'x-cache-hits': '0, 0',
+22 silly registry.get     'x-timer': 'S1398116963.106831074,VS0,VS2,VE98,VE101',
+22 silly registry.get     'keep-alive': 'timeout=10, max=50',
+22 silly registry.get     connection: 'Keep-Alive' } ]
+23 silly lockFile b30af978-node-walk node-walk@
+24 silly lockFile b30af978-node-walk node-walk@
+25 error 404 'node-walk' is not in the npm registry.
+25 error 404 You should bug the author to publish it
+25 error 404
+25 error 404 Maybe try 'npm search walk'
+25 error 404
+25 error 404 Note that you can also install from a
+25 error 404 tarball, folder, or http url, or git url.
+26 error System Darwin 13.0.0
+27 error command "/usr/local/Cellar/node/0.10.26/bin/node" "/usr/local/bin/npm" "install" "node-walk" "-g"
+28 error cwd /Users/LeahSteinberg/hackerschool/emojiapp/public/javascripts
+29 error node -v v0.10.26
+30 error npm -v 1.4.3
+31 error code E404
+32 verbose exit [ 1, true ]
